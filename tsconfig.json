@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -11,12 +11,14 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@front-lms/*": ["libs/*"],
+      "@front-lms/material": ["libs/material/src/index.ts"],
+      "@front-lms/core-data": ["libs/core-data/src/index.ts"],
+      "@front-lms/login": ["libs/login/src/index.ts"],
+      "@front-lms/sidenav": ["libs/sidenav/src/index.ts"]
+    }
   }
 }

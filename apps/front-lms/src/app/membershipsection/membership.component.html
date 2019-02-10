@@ -1,0 +1,12 @@
+<app-searchbar
+(onSelectedOption)="onSelectedFilter($event)"
+(selected)="selectMember($event)"
+>
+</app-searchbar>
+
+<app-member-card
+[members]="user"
+[chosenMember] = "chosenMember"
+>
+
+<app-member-card>

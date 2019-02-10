@@ -1,0 +1,20 @@
+<div class="searchbar-container">
+  <div>
+    <button mat-raised-button color="accent" (click)="openDialog()">Add Member</button>
+  </div>
+<form class="searchbar">
+  <mat-form-field class="search-width">
+    <input #autocompleteInput type="text"
+    matInput
+    [formControl]="searchInput"
+    [matAutocomplete]="auto"
+    placeholder="Member Search"
+    >
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+   <mat-option *ngFor="let option of autoCompleteList" [value]="option" (click)="selected.emit(option)" (onSelectionChange)="filterMemberList($event)">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+</div>

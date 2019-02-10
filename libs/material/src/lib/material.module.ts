@@ -1,0 +1,78 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatButtonToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatOptionModule,
+  MatRadioModule,
+  MatExpansionModule,
+  MatDialogModule
+} from '@angular/material';
+
+@NgModule({
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatExpansionModule,
+    MatDialogModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatButtonToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatExpansionModule,
+    MatDialogModule
+  ]
+})
+export class MaterialModule {}
