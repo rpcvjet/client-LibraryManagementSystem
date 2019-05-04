@@ -1,35 +1,32 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Employee, EmployeeService } from '@front-lms/core-data/src';
 import { DynamicFormComponent } from '@front-lms/components/dynamic-form/dynamic-form.component';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from '@front-lms/components/field.interface';
 import { MatDialogRef, MatSnackBar } from '@angular/material';
 import { v4 as uuid } from 'uuid';
-import { MemberSectionService } from '@front-lms/core-data/src';
+
 
 @Component({
-  selector: 'app-add-member-form',
-  templateUrl: './add-member-form.component.html',
-  styleUrls: ['./add-member-form.component.css']
+  selector: 'app-employee-card',
+  templateUrl: './employee-card.component.html',
+  styleUrls: ['./employee-card.component.css']
 })
-export class AddMemberFormComponent implements OnInit {
-  dateToday;
-  memberNumber;
+export class EmployeeCardComponent  {
+  empNumber;
 
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  @Input() employeeData: Employee[];
 
-  constructor(
-    public dialogRef: MatDialogRef<AddMemberFormComponent>,
-    private snackBar: MatSnackBar,
-    private memberService: MemberSectionService
-  ) {}
-
-  regConfig: FieldConfig[] = [
+  constructor(public dialogRef: MatDialogRef<EmployeeCardComponent>,
+              private snackBar: MatSnackBar,
+              private employeeService: EmployeeService  ) { }
+  employeeInput: FieldConfig[] = [
     {
       type: 'input',
       label: 'Name',
       inputType: 'text',
-      name: 'member_name',
-      value: '',
+      name: 'name',
       validations: [
         {
           name: 'required',
@@ -45,10 +42,9 @@ export class AddMemberFormComponent implements OnInit {
     },
     {
       type: 'input',
-      label: 'Email',
+      label: 'Email Address',
       inputType: 'email',
       name: 'email',
-      value: '',
       validations: [
         {
           name: 'required',
@@ -60,16 +56,15 @@ export class AddMemberFormComponent implements OnInit {
           validator: Validators.pattern(
             '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'
           ),
-          message: 'Invalid Email'
+          message: 'Invalid email'
         }
       ]
     },
     {
       type: 'input',
-      label: 'password',
+      label: 'Password',
       inputType: 'password',
       name: 'password',
-      value: '',
       validations: [
         {
           name: 'required',
@@ -78,29 +73,37 @@ export class AddMemberFormComponent implements OnInit {
         }
       ]
     },
+    // {
+    //   type: 'select',
+    //   label: 'Location',
+    //   name: 'location',
+    //   value:
+    //   options: ['Home', 'Office']
+    // },
     {
       type: 'button',
       label: 'Save'
     }
   ];
 
-  ngOnInit() {
-    this.dateToday = new Date();
-  }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
 
   submit(value: any) {
-    this.memberNumber = uuid();
-    const memberNumber = { memberNumber: this.memberNumber };
+    this.empNumber = uuid();
+    const employee_id = {'employee_id' : this.empNumber};
 
-    Object.assign(value, memberNumber);
+   const empObj =  Object.assign(value, employee_id);
+
+   this.employeeService.createEmployee(empObj).subscribe( (res => this.employeeService.getAll()));
     this.snackBar.open('Employee Added', 'Dismiss', {
       duration: 4000
     });
-    console.log('value', value);
     this.onNoClick();
   }
 }
+
+
+
+

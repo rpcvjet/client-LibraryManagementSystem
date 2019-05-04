@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Member} from './member';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Member } from './member';
 import { Observable } from 'rxjs';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+const BASE_URL = 'http://localhost:8000/api/member';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MemberSectionService {
   searchOption = [];
   public memberData: Member[];
-  model = 'users';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getURL() {
     return `${BASE_URL}`;
@@ -23,12 +20,12 @@ export class MemberSectionService {
     return `${this.getURL()}/${id}`;
   }
 
-  getAll(): Observable<Member[]> {
-    return this.httpClient.get<Member[]>(this.getURL());
+  getAll() {
+    return this.httpClient.get(`${BASE_URL}/all`);
   }
 
   createMember(member) {
-    return this.httpClient.post(this.getURL(), member);
+    return this.httpClient.post(`${BASE_URL}/add`, member);
   }
 
   updateMember(member) {
@@ -38,20 +35,4 @@ export class MemberSectionService {
   deleteMember(memberid) {
     return this.httpClient.delete(this.getMemberbyId(memberid));
   }
-
-  filteredListOptions() {
-
-    let members = this.memberData;
-        let filteredPostsList = [];
-        for (let member of members) {
-            for (let options of this.searchOption) {
-                if (options.name === member.name) {
-                  filteredPostsList.push(member);
-                }
-            }
-        }
-        this.memberData = filteredPostsList;
-        return filteredPostsList;
-  }
-
 }

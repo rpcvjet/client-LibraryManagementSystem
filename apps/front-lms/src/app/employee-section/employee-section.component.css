@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+button {
+margin: 5%;
+}

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { MaterialModule } from '@front-lms/material';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicFieldDirective } from '@front-lms/components/dynamic-field/dynamic-filed.directive';
@@ -15,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material';
 @NgModule({
   declarations: [
-    SearchbarComponent,
     DynamicFormComponent,
     DynamicFieldDirective,
     InputComponent,
@@ -23,9 +21,7 @@ import { MatAutocompleteModule } from '@angular/material';
     RadiobuttonComponent,
     SelectComponent,
     CheckboxComponent,
-    DateComponent,
-
-
+    DateComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +32,6 @@ import { MatAutocompleteModule } from '@angular/material';
     MatAutocompleteModule
   ],
   exports: [
-    SearchbarComponent,
     DynamicFormComponent,
     DynamicFieldDirective,
     InputComponent,
@@ -44,7 +39,7 @@ import { MatAutocompleteModule } from '@angular/material';
     RadiobuttonComponent,
     SelectComponent,
     CheckboxComponent,
-    DateComponent,
+    DateComponent
   ],
   entryComponents: [
     InputComponent,
@@ -53,14 +48,8 @@ import { MatAutocompleteModule } from '@angular/material';
     DateComponent,
     RadiobuttonComponent,
     CheckboxComponent
-
   ]
-
-
-
 })
 export class SharedModule {
-  static forRoot() {
-
-  }
+  static forRoot() {}
 }

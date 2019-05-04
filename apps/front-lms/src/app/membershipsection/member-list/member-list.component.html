@@ -1,0 +1,47 @@
+<div class="container">
+  <button mat-raised-button (click)="openDialog()">Pick one</button>
+  <div class="form-group">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        class="form-control"
+        placeholder="...search Members"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+      />
+    </mat-form-field>
+  </div>
+</div>
+<div class="member">
+  <mat-accordion *ngFor="let m of (members | memberFilter: searchTerm)">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ m.memberNumber }} </mat-panel-title>
+        <mat-panel-description> {{ m.member_name }} </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          class="form-control"
+          name="email"
+          value="{{m.email}}"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="phone"
+          class="form-control"
+          name="phone"
+          value="{{m.phone}}"
+        />
+      </mat-form-field>
+
+      Date Added: {{ m.dateAdded }}
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

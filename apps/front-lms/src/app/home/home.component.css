@@ -1,0 +1,27 @@
+.wrapper {
+  display: grid;
+  border: 1px solid red;
+  grid-gap: 5px;
+  font-family: Arial, sans-serif;
+  grid-template-columns: repeat(2, 1fr) ;
+  grid-template-rows: repeat(1,1fr);
+  grid-template-areas:
+  "article aside"
+
+}
+
+
+
+article {
+  background-color: green;
+  grid-area: article;
+}
+
+/* recent activity */
+aside h2 {
+  grid-area: aside;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+}
