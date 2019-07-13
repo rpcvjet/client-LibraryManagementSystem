@@ -1,0 +1,28 @@
+<div class="container">
+  <button class="addmodal " mat-raised-button (click)="openDialog()">
+    Add Member
+  </button>
+  <div class="form-group search">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        class="form-control"
+        placeholder="...search Members"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+      />
+    </mat-form-field>
+  </div>
+</div>
+<div class="member">
+  <!-- searhTerm filter here -->
+  <mat-card
+    role="listitem"
+    class="panel"
+    *ngFor="let m of (members | memberFilter: searchTerm)"
+    (click)="goToMemberDetail(m)"
+  >
+    {{ m.member_name }}</mat-card
+  >
+</div>

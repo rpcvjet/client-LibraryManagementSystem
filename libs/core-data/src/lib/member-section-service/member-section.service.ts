@@ -1,57 +1,53 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { Member} from './member';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Member } from './member';
+import { Observable, BehaviorSubject } from 'rxjs';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+const BASE_URL = 'http://localhost:8000/api/member';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MemberSectionService {
   searchOption = [];
   public memberData: Member[];
-  model = 'users';
 
-  constructor(private httpClient: HttpClient) { }
+  private memberID = new BehaviorSubject(null);
+  currentId = this.memberID.asObservable();
+
+  constructor(private httpClient: HttpClient) {}
 
   getURL() {
     return `${BASE_URL}`;
   }
 
-  getMemberbyId(id) {
-    return `${this.getURL()}/${id}`;
+  getMemberbyId(id): Observable<any> {
+    return this.httpClient.get(`${BASE_URL}/${id}`);
   }
 
-  getAll(): Observable<Member[]> {
-    return this.httpClient.get<Member[]>(this.getURL());
+  getAll() {
+    return this.httpClient.get(`${BASE_URL}/all`);
+  }
+
+  getMembersHasBooks() {
+    return this.httpClient.get('http://localhost:8000/api/booksout');
   }
 
   createMember(member) {
-    return this.httpClient.post(this.getURL(), member);
+    console.log('member', member);
+    return this.httpClient.post(`${BASE_URL}/add`, member);
   }
 
-  updateMember(member) {
-    return this.httpClient.patch(this.getMemberbyId(member.id), member);
+  updateMemberForm(member) {
+    return this.httpClient.put(`${BASE_URL}/update`, member);
   }
 
-  deleteMember(memberid) {
-    return this.httpClient.delete(this.getMemberbyId(memberid));
+  getCheckedOutBooksByMember(memberid) {
+    return this.httpClient.get(
+      `http://localhost:8000/api/booksout/${memberid}`,
+      memberid
+    );
   }
 
-  filteredListOptions() {
-
-    let members = this.memberData;
-        let filteredPostsList = [];
-        for (let member of members) {
-            for (let options of this.searchOption) {
-                if (options.name === member.name) {
-                  filteredPostsList.push(member);
-                }
-            }
-        }
-        this.memberData = filteredPostsList;
-        return filteredPostsList;
-  }
-
+  // deleteMember(memberid) {
+  //   return this.httpClient.delete(this.getMemberbyId(memberid));
+  // }
 }

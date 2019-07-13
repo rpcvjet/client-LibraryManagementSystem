@@ -1,0 +1,20 @@
+<div class="book-detail-container">
+  <div class="card">
+    <h1 class="title">{{ displayedBook?.title }}</h1>
+    <div class="author">Author: {{ displayedBook?.Author }}</div>
+    <div class="genre">Genre: {{ displayedBook?.genre }}</div>
+    <div class="edition">Edition: {{ displayedBook?.edition }}</div>
+    <div class="volume">Volume: {{ displayedBook?.volume }}</div>
+    <div class="published">Published:{{ displayedBook?.publicationyear }}</div>
+    <div class="shelf">
+      Located: {{ displayedBook?.shelf_name }},
+      {{ displayedBook?.shelf_description }}
+    </div>
+    <div class="checkedout">Available: {{ displayedBook?.available }}</div>
+    <div class="description">
+      Synopsis: <br />
+      {{ displayedBook?.description }}
+    </div>
+    <div class="bookImage"><img src="{{ displayedImage }}" alt="" /></div>
+  </div>
+</div>

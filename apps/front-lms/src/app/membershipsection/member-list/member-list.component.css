@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search {
+  margin-left: 35%;
+}
+
+.panel {
+  width: 40%;
+  margin-bottom: 20px !important;
+  margin-left: 30%;
+}
+
+.panel:hover {
+  cursor: pointer;
+}

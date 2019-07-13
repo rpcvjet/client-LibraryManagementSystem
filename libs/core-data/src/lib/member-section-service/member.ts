@@ -1,7 +1,10 @@
 export interface Member {
   id: number;
-  name: string;
+  memberNumber: string;
+  member_name: string;
   email: string;
-  phone: number;
-  website: string;
+  phone: string;
+  dateAdded: string;
+  image: string;
+  title: string;
 }
