@@ -1,0 +1,86 @@
+<div class="container" *ngIf="displayedMember?.id">
+  <mat-card class="membercard">
+    <h1 class="name">{{ displayedMember.member_name }}</h1>
+
+    <div class="picture"><img src="{{displayedMember.image}}" /></div>
+    <form #memberForm="ngForm">
+      <div class="email">
+        <mat-form-field>
+          <input
+            matInput
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="displayedMember.email"
+            (blur)="updateMember(displayedMember)"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="phone">
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            type="phone"
+            class="form-control"
+            name="phone"
+            [(ngModel)]="displayedMember.phone"
+            (blur)="updateMember(displayedMember)"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="checkedoutbooks">
+      Books Checked Out:
+      <li *ngFor="let book of bookData">{{ book.title }} by {{ book.name }}</li>
+    </div>
+  </mat-card>
+
+  <!--
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+          <h1>{{ displayedMember.member_name }}</h1></mat-card-title
+        >
+        <mat-card-subtitle
+          >Id#: {{ displayedMember.memberNumber }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <h2>
+        <mat-card-content>
+          <form #memberForm="ngForm">
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="displayedMember.email"
+                (blur)="updateMember(displayedMember)"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                type="phone"
+                class="form-control"
+                name="phone"
+                [(ngModel)]="displayedMember.phone"
+                (blur)="updateMember(displayedMember)"
+              />
+            </mat-form-field>
+          </form>
+          Books Checked Out:
+          <li *ngFor="let book of bookData">
+            {{ book.title }} by {{ book.name }}
+          </li>
+        </mat-card-content>
+      </h2>
+      <mat-card-actions>
+        <button mat-button>CHECK IN</button> <button mat-button>CHECK OUT</button>
+      </mat-card-actions>
+    </mat-card>
+  -->
+</div>

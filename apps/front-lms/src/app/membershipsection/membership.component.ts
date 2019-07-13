@@ -26,7 +26,7 @@ export class MemberShipComponent implements OnInit {
     this.members = this.memberService.memberData;
   }
 
-  selectMember(member) {
+  selectMember(member: Member) {
     this.chosenMember = member;
   }
 }

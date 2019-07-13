@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService, Circulation} from '@front-lms/core-data';
+import { DashboardService, Circulation } from '@front-lms/core-data';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +8,15 @@ import { DashboardService, Circulation} from '@front-lms/core-data';
 })
 export class HomeComponent implements OnInit {
   circulationRecords: Circulation[];
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.getCirculationRecords();
+    // this.getCirculationRecords();
   }
 
   getCirculationRecords() {
-    this.dashboardService.loadCirculation().subscribe(
-      (data:Circulation[])=> {
-        this.circulationRecords = data
-      }
-
-    )}
-
+    this.dashboardService.loadCirculation().subscribe((data: Circulation[]) => {
+      this.circulationRecords = data;
+    });
+  }
 }

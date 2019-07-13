@@ -1,41 +1,56 @@
 <div class="wrapper">
   <div style="text-align:center">
-    <h1> Employee Section </h1>
+    <h1>Employee Section</h1>
     <div>
-      <button mat-raised-button color="accent" (click)="openDialog()">Add Employee</button>
+      <button mat-raised-button color="accent" (click)="openDialog()">
+        Add Employee
+      </button>
     </div>
   </div>
-
-
 </div>
 <div class="searchbar-container">
-
-  <mat-table class="employee-table mat-elevation-z8" [dataSource]="dataSource" matSort>
-
-    <!-- <ng-container matColumnDef="seqNo">
-      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-      <mat-cell *matCellDef="let employee">{{employee.seqNo}}</mat-cell>
-  </ng-container> -->
+  <mat-table
+    class="employee-table mat-elevation-z8"
+    [dataSource]="dataSource"
+    matSort
+  >
+    <!--
+      <ng-container matColumnDef="seqNo">
+          <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+          <mat-cell *matCellDef="let employee">{{employee.seqNo}}</mat-cell>
+      </ng-container>
+    -->
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell class="description-cell" *matCellDef="let employee">{{employee.name}}</mat-cell>
-
+      <mat-cell class="description-cell" *matCellDef="let employee">{{
+        employee.employee_name
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let employee">{{employee.email}}</mat-cell>
+      <mat-cell class="duration-cell" *matCellDef="let employee">{{
+        employee.email
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="location">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let employee">{{employee.locationId}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Location</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let employee">{{
+        employee.branch_name
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="employeeid">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Employee ID#</mat-header-cell>
-      <mat-cell class="duration-cell" *matCellDef="let employee">{{employee.employee_id}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Employee ID#</mat-header-cell
+      >
+      <mat-cell class="duration-cell" *matCellDef="let employee">{{
+        employee.employee_number
+      }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
@@ -43,7 +58,6 @@
       <mat-cell class="duration-cell" *matCellDef="let employee">
         <mat-icon (click)="onEditClicked(employee)">edit</mat-icon>
       </mat-cell>
-
     </ng-container>
 
     <ng-container matColumnDef="delete">
@@ -53,14 +67,14 @@
       </mat-cell>
     </ng-container>
 
-
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
   </mat-table>
 
   <!-- <app-employee-card [employeeData]="employee"></app-employee-card> -->
 
-
-  <!-- <dynamic-form [fields]="regConfig" (submit)="submit($event)"></dynamic-form> -->
+  <!--
+    <dynamic-form [fields]="regConfig" (submit)="submit($event)"></dynamic-form>
+  -->
+</div>

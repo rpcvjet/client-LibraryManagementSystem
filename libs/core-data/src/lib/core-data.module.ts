@@ -4,14 +4,17 @@ import { MemberSectionService } from './member-section-service/member-section.se
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeService } from './employee-service/employee.service';
 import { DashboardService } from './home-service/dashboard.service';
-
+import { BooksService } from './books-service/books.service';
+import { UploadService } from './upload-service/upload.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
     MemberSectionService,
     EmployeeService,
-    DashboardService
+    DashboardService,
+    BooksService,
+    UploadService
   ]
 })
 export class CoreDataModule {}

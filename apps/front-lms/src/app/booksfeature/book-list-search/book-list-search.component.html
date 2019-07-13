@@ -1,0 +1,27 @@
+<div class="search-container">
+  <div class="form-group search">
+    <form (submit)="searchForBook(bookSearch)">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          placeholder="...search for a book by author, ISBN, or title..."
+          [(ngModel)]="bookSearch"
+          name="bookSearch"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+
+<div class="results-container">
+  <mat-card
+    role="listitem"
+    class="panel"
+    *ngFor="let book of books"
+    (click)="goToBookDetail(book)"
+  >
+    {{ book.title }} by {{ book.name }}</mat-card
+  >
+</div>

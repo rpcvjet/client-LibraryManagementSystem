@@ -14,12 +14,10 @@ import { MaterialModule } from '@front-lms/material';
 
 import { MatAutocompleteModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
+import { MemberSectionService } from '@front-lms/core-data/src';
 
-  ],
+@NgModule({
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -30,10 +28,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     MatAutocompleteModule,
     SharedModule
-
   ],
   providers: [],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

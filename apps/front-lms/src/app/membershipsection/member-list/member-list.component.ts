@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, MatSnackBar, MatDialog } from '@angular/material';
 import { Member } from '@front-lms/core-data';
+import { AddMemberFormComponent } from '../add-member-form/add-member-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-list',
@@ -8,10 +11,26 @@ import { Member } from '@front-lms/core-data';
 })
 export class MemberListComponent implements OnInit {
   searchTerm: string;
-  panelOpenState = false;
+  panelOpenState = true;
 
   @Input() members: Member[];
-  constructor() {}
+  @Output() selectedMember = new EventEmitter();
+
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   ngOnInit() {}
+
+  openDialog(): void {
+    const memberFormDialog = this.dialog.open(AddMemberFormComponent, {
+      width: '250px'
+    });
+
+    memberFormDialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  goToMemberDetail(clickedMember: Member) {
+    this.router.navigate(['member', clickedMember.id]);
+  }
 }

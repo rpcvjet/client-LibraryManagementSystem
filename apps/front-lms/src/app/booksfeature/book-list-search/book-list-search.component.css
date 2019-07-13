@@ -1,10 +1,10 @@
-.container {
-  display: flex;
-  justify-content: flex-start;
+.search {
+  width: 25%;
 }
 
-.search {
-  margin-left: 35%;
+.search-container {
+  display: flex;
+  justify-content: center;
 }
 
 .panel {

@@ -1,3 +1,4 @@
 <div class="membership-wrapper">
-  <app-member-list [members]="members"> </app-member-list>
+  <app-member-list [members]="members" (selectedMember)="selectMember($event)">
+  </app-member-list>
 </div>
